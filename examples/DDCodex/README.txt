@@ -120,10 +120,45 @@ $> geoDisplay -input file:checkout/examples/DDCodex/compact/CODEX-b-alone.xml
 
 DDG4 simulation:
 
-$> python ../DD4hep//examples/DDCodex/python/CODEX-b-alone.py
+$> python ../DD4hep/examples/DDCodex/python/CODEX-b-alone.py
 
 Visualisation of the hits:
 
 $> root.exe ../DD4hep/examples/DDEve/DDEve.C
+
+
+Build instructions
+===================
+install command:
+$ git clone https://github.com/MarkusFrankATcernch/DD4hep.git
+$ source dd4hep-ci.d/init_x86_64.sh
+$ mkdir build && cd build/
+$ cmake -DDD4HEP_USE_GEANT4=ON -DBoost_NO_BOOST_CMAKE=ON -DDD4HEP_USE_LCIO=ON -DBUILD_TESTING=ON -DGeant4_DIR=$G4INSTALL/lib/Geant4-10.4.0 -DROOT_DIR=$ROOTSYS ..
+$ make -j4
+$ make install
+
+command:
+$ cd DD4hep
+$ source dd4hep-ci.d/init_x86_64.sh -> environment setting
+$ geoDisplay -input file:checkout/examples/DDCodex/compact/CODEX-b-alone.xml
+
+Error:
+-bash: geoDisplay: command not found
+
+In build directory
+source bin/thisdd4hep.sh
+
+then go to examples directory 
+$ mkdir build
+$ cd build
+$ cmake ..
+
+$ make -j 5 install
+
+$ source /afs/cern.ch/work/j/jongho/Project_DD4hep/Test/DD4hep/examples/bin/thisDDCodex.sh
+$ geoDisplay -input file:/afs/cern.ch/work/j/jongho/Project_DD4hep/Test/DD4hep/examples/DDCodex/compact/CODEX-b-alone.xml 
+$ python /afs/cern.ch/work/j/jongho/Project_DD4hep/Test/DD4hep/examples/DDCodex/python/CODEX-b-alone.py
+$ root.exe $DD4hepINSTALL/examples/DDEve/DDEve.C
+
 
 
