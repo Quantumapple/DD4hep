@@ -109,7 +109,7 @@ fi
 export G4INSTALL=${CLICREPO}/software/Geant4/${GEANT4_VERSION}/${BUILD_FLAVOUR}
 export G4ENV_INIT="${G4INSTALL}/bin/geant4.sh"
 export G4SYSTEM="Linux-g++"
-
+export Geant4_DIR="${G4INSTALL}/lib64/Geant4-10.4.0"
 
 #--------------------------------------------------------------------------------
 #     LCIO
