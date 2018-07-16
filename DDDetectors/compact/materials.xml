@@ -140,4 +140,18 @@
     <composite n="3" ref="O" />
   </material>
 
+  <material name="Concrete">
+    <D value="2.30" unit="g/cm3" />
+    <fraction n="0.529" ref="O"/>
+    <fraction n="0.337" ref="Si"/>
+    <fraction n="0.044" ref="Ca"/>
+    <fraction n="0.039" ref="Al"/>
+    <fraction n="0.016" ref="Na"/>
+    <fraction n="0.014" ref="Fe"/>
+    <fraction n="0.013" ref="K"/>
+    <fraction n="0.010" ref="H"/>
+    <fraction n="0.002" ref="Mg"/>
+    <fraction n="0.001" ref="C"/>
+  </material>
+
 </materials>
