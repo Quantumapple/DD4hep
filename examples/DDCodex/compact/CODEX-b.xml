@@ -15,7 +15,7 @@
   <comment>Common Generic visualization attributes</comment>
   <display>
     <vis name="BlackVis"              alpha="1"  r="0.1" g="0.1" b="0.1" showDaughters="false"  visible="true"/>
-    <vis name="Codex_Envelope_Vis"    alpha="0.3" r="0.7" g="0.7" b="0.7" showDaughters="true"  visible="true"/>
+    <vis name="Codex_Envelope_Vis"    alpha="0.7" r="0.2" g="0.2" b="0.7" showDaughters="true"  visible="true"/>
     <vis name="Codex_Module1_Vis"     alpha="0.2"  r="0.8" g="0.2" b="0.2" showDaughters="true"  visible="true"/>
     <vis name="Codex_Module2_Vis"     alpha="0.4"  r="0.2" g="0.8" b="0.2" showDaughters="true"  visible="true"/>
     <vis name="Codex_Module3_Vis"     alpha="1"  r="0.2" g="0.2" b="0.8" showDaughters="true"  visible="true"/>
@@ -28,7 +28,7 @@
   <!--  Includes for sensitives and support                -->
   <detectors>
 
-    <detector id="1" name="CODEXb" type="DD4hep_CODEXb" vis="Codex_Envelope_Vis" readout="CodexHits">
+    <detector id="1" name="CODEXb_shield" type="DD4hep_CODEXb_shield" vis="Codex_Envelope_Vis" readout="CodexHits_shield">
 <!-- limits="codex_limits" -->
 
       <envelope angle="COBEX_beam_angle" dz="COBEX_cone_len" rmax="8*m" />
@@ -49,24 +49,43 @@
       <position x="-sin(COBEX_beam_angle)*COBEX_cone_len/2" y="0"   z="cos(COBEX_beam_angle)*COBEX_cone_len/2"/>
       <rotation x="0"     y="COBEX_beam_angle"   z="0"/>
     </detector>
+
+    <!--detector id="2" name="CODEXb_layer" type="DD4hep_CODEXb_layer" vis="Codex_Module1_Vis" readout="CodexHits_layer">
+       <comment>First station, first layer</comment>
+       <module name="station0_layer0" vis="Codex_Module1_Vis" >
+       <module_envelope width="5*m" length="5*m" thickness="2*cm"/>
+       <module_component width="5*m" length="5*m" thickness="2*cm" material="Silicon" sensitive="true" vis="Codex_Module3_Vis">
+       <position z="2500*cm*cos(60*degree)"/>
+       </module_component>
+       </module>
+    </detector-->
     
-    <detector id="2" name="station1_layer0" type="DD4hep_BoxSegment" vis="Codex_Module2_Vis" readout="CodexHits" >
-      <material name="Si"/>
-      <box      x="1*cm"  y="500*cm"   z="500*cm"/>
-      <position x="2500*cm*sin(60*degree)+167*cm" y="0"   z="2500*cm*cos(60*degree)"/>
-      <rotation x="0" y="0"   z="0"/>
+    <detector id="2" name="CODEXb_layer" type="DD4hep_CODEXb_layer" vis="Codex_Envelope_Vis" readout="CodexHits" >
+       <envelope width="5*m" length="5*m" height="5*m" vis="Codex_Module1_Vis" />
+       <station width="5*m" length="5*m" height="5*m" x="2500*cm*sin(60*degree)-5*cm" y="0" z="2500*cm*cos(60*degree)" />
+       
+       <position x="2500*cm*sin(60*degree)+500*cm" y="0" z="2500*cm*cos(60*degree)" />
     </detector>
-  </detectors>
+   
+
+   </detectors>
   <limits>
     <limitset name="codex_limits">
       <limit name="step_length_max" particles="*" value="5.0" unit="mm" />
     </limitset>
   </limits>
   <readouts>
-    <readout name="CodexHits">
+    <!--readout name="CodexHits">
       <segmentation type="CartesianGridXY" grid_size_x="1*cm" grid_size_y="1*cm" />
       <id>system:8,type:3,station:10,x:32:-16,y:-16</id>
-    </readout>        
+    </readout-->
+    <!--readout name="CodexHits_shield">
+    </readout>
+    <readout name="CodexHits_layer">
+      <segmentation type="CartesianGridXY" grid_size_x="1*cm" grid_size_y="1*cm" />
+      <id>system:8,type:3, </id>
+    </readout-->
+
   </readouts>
 
   <fields>
