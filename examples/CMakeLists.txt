@@ -54,9 +54,9 @@ dd4hep_enable_tests (
   Persistency
   SimpleDetector
   DDG4_MySensDet
+  DDCodex
   )
 #
-dd4hep_enable_tests (DDCodex)
 # XercesC dependent stuff
 if ( DD4HEP_USE_XERCESC )
   dd4hep_print("|++> XercesC PRESENT. Building DDDB examples.")
