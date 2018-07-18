@@ -127,38 +127,52 @@ Visualisation of the hits:
 $> root.exe ../DD4hep/examples/DDEve/DDEve.C
 
 
-Build instructions
-===================
-install command:
+Setup:
+
+********************************************************************************
+*                         ---- LHCb Login v9r2p4 ----                          *
+*      Building with gcc62 on slc6 x86_64 system (x86_64-slc6-gcc62-opt)       *
+********************************************************************************
+ --- User_release_area is set to /afs/cern.ch/user/j/jongho/cmtuser
+ --- LHCBPROJECTPATH is set to:
+    /cvmfs/lhcb.cern.ch/lib/lhcb
+    /cvmfs/lhcb.cern.ch/lib/lcg/releases
+    /cvmfs/lhcb.cern.ch/lib/lcg/app/releases
+    /cvmfs/lhcb.cern.ch/lib/lcg/external
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+Install command:
 $ git clone https://github.com/MarkusFrankATcernch/DD4hep.git
 $ source dd4hep-ci.d/init_x86_64.sh
+
+==================================================
+   Add new environment command in init_x86_64.sh:
+   export Geant4_DIR=${G4INSTALL}/lib/Geant4-10.4.0
+=================================================
+
 $ mkdir build && cd build/
 $ cmake -DDD4HEP_USE_GEANT4=ON -DBoost_NO_BOOST_CMAKE=ON -DDD4HEP_USE_LCIO=ON -DBUILD_TESTING=ON -DGeant4_DIR=$G4INSTALL/lib/Geant4-10.4.0 -DROOT_DIR=$ROOTSYS ..
 $ make -j4
 $ make install
 
-command:
-$ cd DD4hep
-$ source dd4hep-ci.d/init_x86_64.sh -> environment setting
-$ geoDisplay -input file:checkout/examples/DDCodex/compact/CODEX-b-alone.xml
-
-Error:
--bash: geoDisplay: command not found
-
-In build directory
-source bin/thisdd4hep.sh
+move to upper directory
+$ cd ../
+$ source bin/thisdd4hep.sh
 
 then go to examples directory 
+$ cd examples
 $ mkdir build
 $ cd build
 $ cmake ..
 
-$ make -j 5 install
+$ make -j5 install
 
 $ source /afs/cern.ch/work/j/jongho/Project_DD4hep/Test/DD4hep/examples/bin/thisDDCodex.sh
 $ geoDisplay -input file:/afs/cern.ch/work/j/jongho/Project_DD4hep/Test/DD4hep/examples/DDCodex/compact/CODEX-b-alone.xml 
 $ python /afs/cern.ch/work/j/jongho/Project_DD4hep/Test/DD4hep/examples/DDCodex/python/CODEX-b-alone.py
 $ root.exe $DD4hepINSTALL/examples/DDEve/DDEve.C
 
+
+======================================================================================
 
 
