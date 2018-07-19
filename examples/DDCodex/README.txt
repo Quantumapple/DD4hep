@@ -127,6 +127,9 @@ Visualisation of the hits:
 $> root.exe ../DD4hep/examples/DDEve/DDEve.C
 
 
+********************* My version ********************
+============================================================================
+
 Setup:
 
 ********************************************************************************
@@ -172,7 +175,8 @@ $ geoDisplay -input file:/afs/cern.ch/work/j/jongho/Project_DD4hep/Test/DD4hep/e
 $ python /afs/cern.ch/work/j/jongho/Project_DD4hep/Test/DD4hep/examples/DDCodex/python/CODEX-b-alone.py
 $ root.exe $DD4hepINSTALL/examples/DDEve/DDEve.C
 
-
 ======================================================================================
 
-
+How to check hierachy system:
+$ geoPluginRun -input input/xml/file -volmgr -plugin DD4hep_VolumeDump -volids 
+ 
