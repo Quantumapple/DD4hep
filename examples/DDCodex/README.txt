@@ -115,20 +115,53 @@ Running Standalone
 ==================
 
 Display:
-
+--------
 $> geoDisplay -input file:checkout/examples/DDCodex/compact/CODEX-b-alone.xml
 
 DDG4 simulation:
-
+----------------
 $> python ../DD4hep/examples/DDCodex/python/CODEX-b-alone.py
 
-Visualisation of the hits:
+Reading the output file:
+------------------------
+$> root.exe
+   ------------------------------------------------------------
+  | Welcome to ROOT 6.12/06                http://root.cern.ch |
+  |                               (c) 1995-2017, The ROOT Team |
+  | Built for linuxx8664gcc                                    |
+  | From tag v6-12-06, 9 February 2018                         |
+  | Try '.help', '.demo', '.license', '.credits', '.quit'/'.q' |
+   ------------------------------------------------------------
 
+root [0] gSystem->Load("libDDG4Plugins.so")
+(int) 0
+root [1] TFile*f=TFile::Open("CodexB_2018-07-18_20-34.root");
+root [2] TTree* t=(TTree*)f->Get("EVENT")
+(TTree *) 0x2f53670
+root [3] TBranch* br=t->GetBranch("MCParticles")
+(TBranch *) 0x444a1b0
+root [4] std::vector<dd4hep::sim::Geant4Particle*> particles;
+root [5] std::vector<dd4hep::sim::Geant4Particle*>* p_particles = &particles;
+root [6] br->SetAddress(&p_particles);
+root [7] br->GetEntry(1)
+(int) 1014
+root [8] particles.size()
+(unsigned long) 4
+root [9] particles[0]->psx
+(double) 866025.30
+root [10] particles[1]->psx
+(double) 127.60460
+root [11] particles[2]->psx
+(double) 419.25210
+root [12] particles[3]->psx
+(double) 359.89637
+root [13] 
+
+
+Visualisation of the hits:
+--------------------------
 $> root.exe ../DD4hep/examples/DDEve/DDEve.C
 
-
-********************* My version ********************
-============================================================================
 
 Setup:
 
@@ -175,8 +208,7 @@ $ geoDisplay -input file:/afs/cern.ch/work/j/jongho/Project_DD4hep/Test/DD4hep/e
 $ python /afs/cern.ch/work/j/jongho/Project_DD4hep/Test/DD4hep/examples/DDCodex/python/CODEX-b-alone.py
 $ root.exe $DD4hepINSTALL/examples/DDEve/DDEve.C
 
+
 ======================================================================================
 
-How to check hierachy system:
-$ geoPluginRun -input input/xml/file -volmgr -plugin DD4hep_VolumeDump -volids 
- 
+
