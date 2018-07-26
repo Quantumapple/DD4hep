@@ -50,6 +50,8 @@ def run():
   #seq,action = geant4.setupTracker('CODEXb')
   seq,action = geant4.setupCalorimeter('CODEXb')
   action.OutputLevel = Output.ERROR
+  seq,action = geant4.setupCalorimeter('Shield')
+  action.OutputLevel = Output.ERROR
   #geant4.setupTracker('CODEX-b-Shield')
   #geant4.setupTracker('CODEX-b-Stations')
 
